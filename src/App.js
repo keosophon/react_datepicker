@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import DatePicker from "react-datepicker";
+import { useState } from "react";
+import "react-datepicker/dist/react-datepicker.css";
 
 function App() {
+  const [selectedDate, setSelectedDate] = useState(new Date());
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ marginLeft: "30" }}>
+      <p>native date input:</p>
+      <input aria-label="Date" type="date" />
+
+      <p>react-datepicker:</p>
+
+      <DatePicker
+        selected={selectedDate}
+        onChange={(date) => setSelectedDate(date)}
+        showYearDropdown
+        maxDate={new Date()}
+      />
     </div>
   );
 }
